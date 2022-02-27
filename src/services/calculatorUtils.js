@@ -9,11 +9,11 @@ const methods = () => ({
     });
   },
   formatIP: (ip = "1") => {
-    return ip.replace(/[.:]+/g, "");
+    return ip.split(":")[0].replace(/[.:]+/g, "");
   },
   checkIfFileExists: (fileName) => {
     const filePath = `${__dirname}/${fileName}.txt`;
-    console.log(filePath);
+
     try {
       if (fs.existsSync(filePath)) {
         return filePath;
