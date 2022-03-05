@@ -22,7 +22,7 @@ const methods = () => ({
     });
     const currentDate = new Date();
     logger.write(`${index} ` + equation + " " + currentDate.getTime() + "\n");
-    if (index % 12 === 0) {
+    if (index % 20 === 0) {
       logger.write("Blocked" + "\n");
     }
   },
