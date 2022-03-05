@@ -24,6 +24,5 @@ app.use(express.static(DIST_DIR));
 app.get("/", (req, res) => {
   res.sendFile(HTML_FILE);
 });
-app.use("/rewardpicker", express.static(path.join(__dirname, "static")));
 
 app.listen(process.env.PORT || 8083);

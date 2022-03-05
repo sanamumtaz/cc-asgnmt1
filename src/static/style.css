@@ -13,6 +13,18 @@ section {
   justify-items: center;
 }
 
+.loading-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#blocked-container span {
+  max-width: 55%;
+}
+
 .container {
   min-width: 400px;
   box-shadow: 0px 0px 43px 17px rgb(153 153 153);
@@ -56,4 +68,36 @@ section {
   background-color: #323330;
   color: white;
   transition: 0.5s ease-in-out;
+}
+
+.logs-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+  width: 50%;
+}
+
+.blocked-container {
+  text-align: center;
+}
+
+table {
+  width: 100%;
+}
+
+table,
+td {
+  border: 1px solid black;
+}
+
+.download {
+  background-color: rgb(85, 85, 255);
+    color: white;
+    padding: 15px;
+    line-height: 1.35;
+}
+
+.displayNone {
+  display: none;
 }

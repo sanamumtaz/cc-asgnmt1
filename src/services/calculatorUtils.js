@@ -1,13 +1,7 @@
 const fs = require("fs");
+const readLastLines = require("read-last-lines");
 
 const methods = () => ({
-  createfileIfNotExists: (file) => {
-    return new Promise((resolve) => {
-      fs.access(file, fs.constants.F_OK, (err) => {
-        err ? resolve(false) : resolve(true);
-      });
-    });
-  },
   formatIP: (ip = "1") => {
     return ip.split(":")[0].replace(/[.:]+/g, "");
   },
@@ -22,12 +16,22 @@ const methods = () => ({
       return false;
     }
   },
-  logEntry: (fileName, equation) => {
+  logEntry: (fileName, equation, index) => {
     const logger = fs.createWriteStream(`${__dirname}/${fileName}.txt`, {
       flags: "a",
     });
-
-    logger.write(equation + "\n");
+    const currentDate = new Date();
+    logger.write(`${index} ` + equation + " " + currentDate.getTime() + "\n");
+    if (index % 12 === 0) {
+      logger.write("Blocked" + "\n");
+    }
+  },
+  returnLastXLine: async (filePath, count, reverse = false) => {
+    let lastLines = [];
+    const lines = await readLastLines.read(filePath, count);
+    lastLines = lines.replace(/\r\n/g, "\n").split("\n");
+    if(reverse) return lastLines.reverse();
+    return lastLines;
   },
 });
 module.exports = methods;
